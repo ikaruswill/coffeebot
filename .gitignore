@@ -1,2 +1,3 @@
 *.db
 cmd/koffea/koffea
+config.yaml
