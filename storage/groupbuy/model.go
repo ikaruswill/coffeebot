@@ -1,7 +1,7 @@
 package groupbuy
 
 import (
-	"github.com/ikaruswill/koffea/internal/storage/order"
+	"github.com/ikaruswill/koffea/storage/order"
 	"gorm.io/gorm"
 )
 

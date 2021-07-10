@@ -1,8 +1,8 @@
 package user
 
 import (
-	"github.com/ikaruswill/koffea/internal/storage/groupbuy"
-	"github.com/ikaruswill/koffea/internal/storage/order"
+	"github.com/ikaruswill/koffea/storage/groupbuy"
+	"github.com/ikaruswill/koffea/storage/order"
 	"gorm.io/gorm"
 )
 

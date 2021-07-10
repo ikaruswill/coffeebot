@@ -1,10 +1,10 @@
 package storage
 
 import (
-	"github.com/ikaruswill/koffea/internal/config"
-	"github.com/ikaruswill/koffea/internal/storage/groupbuy"
-	"github.com/ikaruswill/koffea/internal/storage/order"
-	"github.com/ikaruswill/koffea/internal/storage/user"
+	"github.com/ikaruswill/koffea/config"
+	"github.com/ikaruswill/koffea/storage/groupbuy"
+	"github.com/ikaruswill/koffea/storage/order"
+	"github.com/ikaruswill/koffea/storage/user"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )

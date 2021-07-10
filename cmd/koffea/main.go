@@ -4,12 +4,12 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/ikaruswill/koffea/internal/client/sqlite"
-	"github.com/ikaruswill/koffea/internal/client/telegram"
-	"github.com/ikaruswill/koffea/internal/config"
-	groupbuyStorage "github.com/ikaruswill/koffea/internal/storage/groupbuy"
-	orderStorage "github.com/ikaruswill/koffea/internal/storage/order"
-	userStorage "github.com/ikaruswill/koffea/internal/storage/user"
+	"github.com/ikaruswill/koffea/client/sqlite"
+	"github.com/ikaruswill/koffea/client/telegram"
+	"github.com/ikaruswill/koffea/config"
+	groupbuyStorage "github.com/ikaruswill/koffea/storage/groupbuy"
+	orderStorage "github.com/ikaruswill/koffea/storage/order"
+	userStorage "github.com/ikaruswill/koffea/storage/user"
 	tb "gopkg.in/tucnak/telebot.v2"
 )
 
@@ -79,7 +79,7 @@ func main() {
 		for idx, groupBuy := range groupBuys {
 			user := &userStorage.User{}
 			dbClient.DB.Where("id = ?", groupBuy.ID).First(&user)
-			response += fmt.Sprintf("%d. [%s] %s by %s %s", idx+1, groupBuy.CreatedAt.Format("2006-01-02"), groupBuy.Name, user.FirstName, user.LastName)
+			response += fmt.Sprintf("%d. [%s] %s by %s %s", idx+1, groupBuy.CreatedAt.Format("2006-01-02"), "SHOP NAME", user.FirstName, user.LastName)
 		}
 		tClient.Bot.Send(m.Sender, response)
 	})
