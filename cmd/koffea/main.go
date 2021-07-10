@@ -3,10 +3,10 @@ package main
 import (
 	"log"
 
-	"github.com/ikaruswill/koffeabot/internal/client/sqlite"
-	"github.com/ikaruswill/koffeabot/internal/client/telegram"
-	"github.com/ikaruswill/koffeabot/internal/config"
-	"github.com/ikaruswill/koffeabot/internal/storage/user"
+	"github.com/ikaruswill/koffea/internal/client/sqlite"
+	"github.com/ikaruswill/koffea/internal/client/telegram"
+	"github.com/ikaruswill/koffea/internal/config"
+	"github.com/ikaruswill/koffea/internal/storage/user"
 	tb "gopkg.in/tucnak/telebot.v2"
 )
 

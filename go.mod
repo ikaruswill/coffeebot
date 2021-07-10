@@ -1,4 +1,4 @@
-module github.com/ikaruswill/koffeabot
+module github.com/ikaruswill/koffea
 
 go 1.16
 

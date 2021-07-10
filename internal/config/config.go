@@ -4,9 +4,9 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/ikaruswill/koffeabot/internal/client/postgres"
-	"github.com/ikaruswill/koffeabot/internal/client/sqlite"
-	"github.com/ikaruswill/koffeabot/internal/client/telegram"
+	"github.com/ikaruswill/koffea/internal/client/postgres"
+	"github.com/ikaruswill/koffea/internal/client/sqlite"
+	"github.com/ikaruswill/koffea/internal/client/telegram"
 	"gopkg.in/yaml.v2"
 )
 
