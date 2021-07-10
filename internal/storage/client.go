@@ -13,9 +13,9 @@ type Client struct {
 	DB *gorm.DB
 }
 
-func (c *Client) Init(config.DBConfig) error {
+func (c *Client) Init(cfg config.StorageConfig) error {
 	var err error
-	c.DB, err = gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+	c.DB, err = gorm.Open(sqlite.Open(cfg.Sqlite.Path), &gorm.Config{})
 	if err != nil {
 		return err
 	}
