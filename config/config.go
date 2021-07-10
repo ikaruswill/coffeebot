@@ -1,6 +1,7 @@
 package config
 
 import (
+	"errors"
 	"io/ioutil"
 	"log"
 
@@ -20,12 +21,20 @@ const (
 type StorageConfig struct {
 	Driver   StorageDriver   `yaml:"driver"`
 	Sqlite   sqlite.Config   `yaml:"sqlite"`
-	postgres postgres.Config `yaml:"postgres"`
+	Postgres postgres.Config `yaml:"postgres"`
 }
 
 type Config struct {
 	Telegram telegram.Config `yaml:"telegram"`
 	Storage  StorageConfig   `yaml:"storage"`
+}
+
+func (s *StorageConfig) validateDriver() error {
+	switch s.Driver {
+	case SqliteStorageDriver, PostgresStorageDriver:
+		return nil
+	}
+	return errors.New("invalid storage driver")
 }
 
 func (c *Config) Load(path string) error {
@@ -39,5 +48,6 @@ func (c *Config) Load(path string) error {
 		log.Fatalf("Unmarshal: %v", err)
 		return err
 	}
-	return nil
+	err = c.Storage.validateDriver()
+	return err
 }
