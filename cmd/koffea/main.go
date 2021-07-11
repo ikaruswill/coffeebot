@@ -7,9 +7,7 @@ import (
 	"github.com/ikaruswill/koffea/client/sqlite"
 	"github.com/ikaruswill/koffea/client/telegram"
 	"github.com/ikaruswill/koffea/config"
-	groupbuyStorage "github.com/ikaruswill/koffea/storage/groupbuy"
-	orderStorage "github.com/ikaruswill/koffea/storage/order"
-	userStorage "github.com/ikaruswill/koffea/storage/user"
+	"github.com/ikaruswill/koffea/storage"
 	tb "gopkg.in/tucnak/telebot.v2"
 )
 
@@ -43,9 +41,9 @@ func main() {
 	dbClient, err = sqlite.NewConnection(koffeaConfig.Storage.Sqlite)
 
 	dbClient.DB.AutoMigrate(
-		&userStorage.User{},
-		&orderStorage.Order{},
-		&groupbuyStorage.GroupBuy{},
+		&storage.User{},
+		&storage.Order{},
+		&storage.GroupBuy{},
 	)
 
 	if err != nil {
@@ -54,7 +52,7 @@ func main() {
 	}
 
 	tClient.Bot.Handle("/start", func(m *tb.Message) {
-		user := &userStorage.User{
+		user := &storage.User{
 			FirstName:    m.Sender.FirstName,
 			LastName:     m.Sender.LastName,
 			Username:     m.Sender.Username,
@@ -72,12 +70,12 @@ func main() {
 	})
 
 	tClient.Bot.Handle("/listgb", func(m *tb.Message) {
-		var groupBuys []groupbuyStorage.GroupBuy
+		var groupBuys []storage.GroupBuy
 		dbClient.DB.Order("created_at desc").Find(&groupBuys)
 
 		response := "Here are the current active group buys:\n"
 		for idx, groupBuy := range groupBuys {
-			user := &userStorage.User{}
+			user := &storage.User{}
 			dbClient.DB.Where("id = ?", groupBuy.ID).First(&user)
 			response += fmt.Sprintf("%d. [%s] %s by %s %s", idx+1, groupBuy.CreatedAt.Format("2006-01-02"), "SHOP NAME", user.FirstName, user.LastName)
 		}

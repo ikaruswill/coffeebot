@@ -1,8 +1,6 @@
-package user
+package storage
 
 import (
-	"github.com/ikaruswill/koffea/storage/groupbuy"
-	"github.com/ikaruswill/koffea/storage/order"
 	"gorm.io/gorm"
 )
 
@@ -14,6 +12,6 @@ type User struct {
 	Username     string `gorm:"not null"`
 	LanguageCode string
 	IsBot        bool
-	GroupBuys    []groupbuy.GroupBuy
-	Orders       []order.Order
+	GroupBuys    []GroupBuy
+	Orders       []Order
 }
