@@ -5,6 +5,11 @@ import (
 	"gorm.io/gorm/clause"
 )
 
+type Location struct {
+	Name       string
+	DistrictID uint
+}
+
 type District struct {
 	Name      string
 	Locations []Location
@@ -180,7 +185,10 @@ func NewDistrictService(storage Storage) *DistrictService {
 	s := DistrictService{
 		Storage: storage,
 	}
-	s.Storage.AutoMigrate(&District{})
+	s.Storage.AutoMigrate(
+		&District{},
+		&Location{},
+	)
 	s.initDB()
 	return &s
 }
