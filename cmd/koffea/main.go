@@ -37,6 +37,7 @@ func main() {
 		UserService:     storage.NewUserService(store),
 		OrderService:    storage.NewOrderService(store),
 		GroupBuyService: storage.NewGroupBuyService(store),
+		DistrictService: storage.NewDistrictService(store),
 		TelegramService: tClient,
 	}
 
