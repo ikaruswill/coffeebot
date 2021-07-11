@@ -52,11 +52,11 @@ func main() {
 		app.UserService.CreateIfNotExists(user)
 
 		tClient.Bot.Send(m.Sender, fmt.Sprintf("Hi %s! My name is Koffea, how can I help you today?", user.FirstName))
-		tClient.Bot.Send(m.Sender, `/listgb - List active group buys
-		/viewgb - View information about a group buy
-		/startgb - Start a group buy
-		/joingb - Join a group buy
-		/endgb - End a group buy`)
+		tClient.Bot.Send(m.Sender, "/listgb - List active group buys\n"+
+			"/viewgb - View information about a group buy\n"+
+			"/startgb - Start a group buy\n"+
+			"/joingb - Join a group buy\n"+
+			"/endgb - End a group buy")
 	})
 
 	tClient.Bot.Start()
