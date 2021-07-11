@@ -1,6 +1,8 @@
 package storage
 
 import (
+	"time"
+
 	"github.com/ikaruswill/koffea/koffea"
 	"gorm.io/gorm"
 )
@@ -15,6 +17,8 @@ const (
 type GroupBuy struct {
 	gorm.Model
 	RoasterName          string
+	Location             Location
+	Expiry               time.Time
 	PaymentMethod        PaymentMethod
 	AllowAdvancePayment  bool
 	CollectionPostalCode uint

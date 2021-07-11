@@ -5,13 +5,15 @@ import "time"
 type PaymentMethod string
 
 const (
-	CashPaymentMethod   = "Cash"
-	PayNowPaymentMethod = "PayNow"
+	CashPaymentMethod   PaymentMethod = "Cash"
+	PayNowPaymentMethod PaymentMethod = "PayNow"
 )
 
 type GroupBuy struct {
 	RoasterName          string
+	Location             string
 	StartedAt            time.Time
+	Expiry               time.Time
 	EndedAt              time.Time
 	PaymentMethod        PaymentMethod
 	AllowAdvancePayment  bool
