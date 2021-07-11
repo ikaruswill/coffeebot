@@ -2,11 +2,23 @@ package koffea
 
 import "time"
 
+type PaymentMethod string
+
+const (
+	CashPaymentMethod   = "Cash"
+	PayNowPaymentMethod = "PayNow"
+)
+
 type GroupBuy struct {
-	CreatedAt time.Time
-	UpdatedAt time.Time
-	User      User
-	Orders    []Order
+	RoasterName          string
+	StartedAt            time.Time
+	EndedAt              time.Time
+	PaymentMethod        PaymentMethod
+	AllowAdvancePayment  bool
+	CollectionPostalCode uint
+	Comment              string
+	Organizer            User
+	Orders               []Order
 }
 
 type GroupBuyService interface {

@@ -5,10 +5,22 @@ import (
 	"gorm.io/gorm"
 )
 
+type PaymentMethod string
+
+const (
+	CashPaymentMethod   PaymentMethod = "cash"
+	PayNowPaymentMethod PaymentMethod = "paynow"
+)
+
 type GroupBuy struct {
 	gorm.Model
-	UserID uint
-	Orders []Order
+	RoasterName          string
+	PaymentMethod        PaymentMethod
+	AllowAdvancePayment  bool
+	CollectionPostalCode uint
+	Comment              string
+	UserID               uint
+	Orders               []Order
 }
 
 type GroupBuyService struct {
