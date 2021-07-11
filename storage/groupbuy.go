@@ -17,6 +17,7 @@ const (
 type GroupBuy struct {
 	gorm.Model
 	RoasterName          string
+	LocationID           uint
 	Location             Location
 	Expiry               time.Time
 	PaymentMethod        PaymentMethod

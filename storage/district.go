@@ -7,11 +7,13 @@ import (
 
 type Location struct {
 	Name       string
+	ID         uint
 	DistrictID uint
 }
 
 type District struct {
 	Name      string
+	ID        uint
 	Locations []Location
 }
 
