@@ -7,8 +7,12 @@ import (
 
 type Order struct {
 	gorm.Model
-	UserID     uint
-	GroupBuyID uint
+	ProductName    string
+	Quantity       uint8
+	AdvancePayment bool
+	HasPaid        bool
+	GroupBuyID     uint
+	UserID         uint
 }
 
 type OrderService struct {

@@ -3,9 +3,14 @@ package koffea
 import "time"
 
 type Order struct {
-	CreatedAt time.Time
-	GroupBuy  GroupBuy
-	User      User
+	CreatedAt      time.Time
+	UpdatedAt      time.Time
+	ProductName    string
+	Quantity       uint8
+	AdvancePayment bool
+	HasPaid        bool
+	GroupBuy       GroupBuy
+	User           User
 }
 
 type OrderService interface {
