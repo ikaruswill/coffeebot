@@ -15,19 +15,7 @@ type Config struct {
 	Password string `yaml:"password"`
 }
 
-type Client struct {
-	DB *gorm.DB
-}
-
-func (c *Client) init(config Config) error {
-	var err error
+func NewConnection(config Config) (*gorm.DB, error) {
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", config.Host, config.User, config.Password, config.Database, config.Port)
-	c.DB, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	return err
-}
-
-func NewConnection(config Config) (*Client, error) {
-	c := &Client{}
-	err := c.init(config)
-	return c, err
+	return gorm.Open(postgres.Open(dsn), &gorm.Config{})
 }
