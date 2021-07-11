@@ -14,8 +14,8 @@ import (
 type StorageDriver string
 
 const (
-	SqliteStorageDriver   = "sqlite"
-	PostgresStorageDriver = "postgres"
+	SqliteStorageDriver   StorageDriver = "sqlite"
+	PostgresStorageDriver StorageDriver = "postgres"
 )
 
 type StorageConfig struct {
