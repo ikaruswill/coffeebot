@@ -16,15 +16,16 @@ const (
 
 type GroupBuy struct {
 	gorm.Model
-	RoasterName          string
-	LocationID           uint
+	RoasterName          string `gorm:"not null"`
+	LocationID           uint   `gorm:"not null"`
 	Location             Location
 	Expiry               time.Time
-	PaymentMethod        PaymentMethod
-	AllowAdvancePayment  bool
-	CollectionPostalCode uint
+	PaymentMethod        PaymentMethod `gorm:"not null"`
+	AllowAdvancePayment  bool          `gorm:"not null"`
+	CollectionPostalCode uint          `gorm:"not null"`
 	Comment              string
-	UserID               uint
+	UserID               uint `gorm:"not null"`
+	User                 User
 	Orders               []Order
 }
 

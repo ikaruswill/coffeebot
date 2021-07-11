@@ -7,12 +7,13 @@ import (
 
 type Order struct {
 	gorm.Model
-	ProductName    string
-	Quantity       uint8
+	ProductName    string `gorm:"not null"`
+	Quantity       uint8  `gorm:"not null"`
 	AdvancePayment bool
 	HasPaid        bool
-	GroupBuyID     uint
-	UserID         uint
+	GroupBuyID     uint `gorm:"not null"`
+	UserID         uint `gorm:"not null"`
+	User           User
 }
 
 type OrderService struct {

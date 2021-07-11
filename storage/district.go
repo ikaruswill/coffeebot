@@ -6,14 +6,14 @@ import (
 )
 
 type Location struct {
-	Name       string
 	ID         uint
+	Name       string `gorm:"index:,unique,not null"`
 	DistrictID uint
 }
 
 type District struct {
-	Name      string
 	ID        uint
+	Name      string `gorm:"index:,unique,not null"`
 	Locations []Location
 }
 
